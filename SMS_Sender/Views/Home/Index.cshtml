@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <!-- Default form contact -->
+    <div class="border border-light p-5">
+
+        <p class="h4 mb-4 text-md-center font-weight-bolder">Dodaj primatelje SMS poruka</p>
+
+        <!-- Full Name -->
+        <div class="row">
+            <div class="col-md-3 offset-md-2 text-right font-weight-bold">
+                <label>Ime i prezime:</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" id="txtFullName" class="form-control mb-4">
+            </div>
+        </div>
+
+
+        <!-- Email -->
+        <div class="row">
+            <div class="col-md-3 offset-md-2 text-right font-weight-bold">
+                <label>Broj mobitela:</label>
+            </div>
+            <div class="col-md-3 ">
+                <input type="tel" id="txtCellPhone" class="form-control mb-4">
+            </div>
+        </div>
+
+        <!-- Send button -->
+        <div class="row">
+            <div class="col-md-2 offset-md-6 font-weight-bold align-self-end">
+                <button id="btnAddRecipient" class="btn btn-secondary btn-sm" onclick="fetchReceiverData()" type="button">Dodaj primatelja</button>
+            </div>
+        </div>
+
+        <div class="row spacer" style="padding-top:50px">
+            <table id="tblReceivers" class="table d-lg-table col-sm-5 offset-sm-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Poslati</th>
+                        <th scope="col">Ime i prezime</th>
+                        <th scope="col">Mobitel</th>
+                    </tr>
+                </thead>
+                <tbody id="tblReceiversBody">
+                  
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row spacer">
+            <div class="col-md-5 offset-sm-3">
+                <label id="lblSMS">SMS poruka <strong id="lblCharNum"></strong></label>
+                <textarea class="form-control rounded-lg" id="txtSMS" onkeyup="CalculateRemainingChars()" rows="4" placeholder="Najviše 160 znakova"></textarea>
+            </div>
+        </div>
+
+        <div class="row spacer">
+            <div class="col-md-3 offset-sm-3">
+                <button id="btnSendSMS" type="button" class="btn btn-primary btn-lg align-self-lg-start" onclick="getMessages()">Pošalji</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="alertDiv" class="container alert">
+            <strong id="alertStatus"></strong> <pre id="alertMsg"></pre>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/SMS_Sender_javascript/index.js"></script>
+}
